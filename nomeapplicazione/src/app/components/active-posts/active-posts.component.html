@@ -1,0 +1,20 @@
+<div class="container">
+  <h2 class="text-success text-center mt-3">Active posts</h2>
+  <div class="row row-cols-3 g-4 justify-content-center mt-3">
+    <div
+      class="col border border-success p-3 d-flex flex-column ms-1 w-25"
+      *ngFor="let post of postsActive"
+    >
+      <h4>{{ post.title }}</h4>
+      <p class="text-truncate flex-grow-1">{{ post.body }}</p>
+      <button
+        type="button"
+        class="btn btn-outline-success mb-3"
+        [routerLink]="['/postDetails', post.id]"
+      >
+        CONTINUA A LEGGERE
+      </button>
+      <p class="border-start border-success ps-1">{{ post.tags }}</p>
+    </div>
+  </div>
+</div>

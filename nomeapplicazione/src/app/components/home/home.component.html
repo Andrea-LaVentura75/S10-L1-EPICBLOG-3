@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-12">
+      <h3 class="mb-3 text-success mt-3">Post in evidenza</h3>
+      <div
+        class="mt-3 border border-success p-3"
+        *ngIf="postCasuale.length > 0"
+      >
+        <h4>{{ postCasuale[0].title }}</h4>
+        <p>{{ postCasuale[0].body }}</p>
+        <button
+          type="button"
+          class="btn btn-outline-success mb-3"
+          [routerLink]="['/postDetails', postCasuale[0].id]"
+        >
+          CONTINUA A LEGGERE
+        </button>
+        <p class="border-start border-success ps-1">
+          {{ postCasuale[0].tags }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <h3 class="mt-4 mb-2 text-success">Post che potrebbero piacerti</h3>
+    <div
+      class="col col-3 mt-3 border border-success p-3 d-flex flex-column"
+      *ngFor="let post of postCasuale.slice(1)"
+    >
+      <h4>{{ post.title }}</h4>
+      <p class="text-truncate flex-grow-1">{{ post.body }}</p>
+      <button
+        type="button"
+        class="btn btn-outline-success mb-3"
+        [routerLink]="['/postDetails', post.id]"
+      >
+        CONTINUA A LEGGERE
+      </button>
+      <p class="border-start border-success ps-1">{{ post.tags }}</p>
+    </div>
+  </div>
+</div>
+
+<h3 class="mb-3 text-center text-success mt-3">Tutti i nostri posts</h3>
+
+<div class="container">
+  <div class="row row-cols-3 g-4 justify-content-center mt-3">
+    <div class="col" *ngFor="let post of arrayPost">
+      <app-single-post [post]="post" (onUpdateRequest)="updatePost($event)">
+        <!-- Mostra i campi di input solo se il post corrente è selezionato -->
+        <div *ngIf="selectedPost && selectedPost.id === post.id">
+          <input
+            class="my-2"
+            type="text"
+            [(ngModel)]="selectedPost.title"
+            placeholder="Modifica titolo"
+          />
+          <input
+            type="text"
+            [(ngModel)]="selectedPost.body"
+            placeholder="Modifica paragrafo"
+          />
+          <button (click)="updatePost(selectedPost)">Salva Modifiche</button>
+        </div>
+      </app-single-post>
+    </div>
+  </div>
+</div>

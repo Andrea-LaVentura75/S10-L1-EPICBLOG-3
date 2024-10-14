@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex flex-column align-items-center" *ngIf="post">
+      <img class="py-4 rounded-circle" src="https://picsum.photos/500" alt="" />
+      <div class="p-3">
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.body }}</p>
+        <button
+          type="button"
+          class="btn btn-outline-success mb-3"
+          routerLink="/"
+        >
+          TORNA ALLA HOME
+        </button>
+        <p class="border-start border-success ps-1">{{ post.tags }}</p>
+      </div>
+    </div>
+  </div>
+</div>
