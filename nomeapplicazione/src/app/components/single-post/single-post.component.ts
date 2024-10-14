@@ -8,11 +8,5 @@ import { Ipost } from '../../interfaces/ipost';
 })
 export class SinglePostComponent {
   @Input() post!: Ipost;
-  @Output() onUpdateRequest = new EventEmitter<Ipost>();
-
-  update() {
-    if (this.post) {
-      this.onUpdateRequest.emit(this.post);
-    }
-  }
+  @Input() postCasuale!: Ipost[];
 }

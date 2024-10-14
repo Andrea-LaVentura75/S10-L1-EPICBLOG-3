@@ -1,4 +1,7 @@
-<div class="border border-success p-3 d-flex flex-column ms-1 w-100">
+<div
+  [ngClass]="{ 'border-info': post.active }"
+  class="border border-success p-3 d-flex flex-column ms-1 w-100"
+>
   <h4>{{ post.title }}</h4>
   <p class="text-truncate flex-grow-1">{{ post.body }}</p>
   <button
@@ -11,7 +14,4 @@
   <p class="border-start border-success ps-1">{{ post.tags }}</p>
 
   <ng-content></ng-content>
-  <button type="button" class="btn btn-outline-success mb-3 mt-2">
-    Modifica post
-  </button>
 </div>
